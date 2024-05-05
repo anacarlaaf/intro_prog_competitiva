@@ -1,36 +1,50 @@
 n = list(input())
-letras = set(n)
+n = sorted(n)
 tam = len(n)
+palin = [" " for i in range(tam)]
 
-palin = [" " for i in range(len(n))]
-contar = {}  # um dict pra guardar quantas vezes os chars aparecem
-
-for i in letras:
-    contar[i] = n.count(i)
-
-qtd_impares = 0
-impar = ""
-impar_index = 0
-for i in contar:
-    if contar[i] % 2 != 0:
-        qtd_impares += 1
-        impar = i
-if qtd_impares == 1:
-    n2 = sorted(n.copy())
-    n2.remove(impar)
-    for i in range(int(tam / 2)):
-        palin[i] = n2[0]
-        palin[-i - 1] = n2[1]
-        del n2[:2]
-    palin[int(tam/2)] = impar
-    print("".join(palin))
-
-elif qtd_impares == 0:
-    n2 = sorted(n.copy())
+controle = 0
+no_solution = False
+if tam % 2 == 0:
     for i in range(int(tam/2)):
-        palin[i] = n2[0]
-        palin[-i-1] = n2[1]
-        del n2[:2]
-    print("".join(palin))
+        if n[controle] == n[controle+1]:
+            palin[i] = n[controle]
+            palin[-i-1] = n[controle+1]
+            controle += 2
+        else:
+            no_solution = True
+            break
+    if no_solution:
+        print("NO SOLUTION")
+    else:
+        print("".join(palin))
+
 else:
-    print("NO SOLUTION")
+    impares = 0
+    tam2 = int(tam / 2)
+    meio = " "
+    for i in range(tam2):
+        if n[controle] == n[controle + 1]:
+            palin[i] = n[controle]
+            palin[-i - 1] = n[controle + 1]
+            controle += 2
+        else:
+            impares += 1
+            if impares > 1:
+                impares += 1
+                break
+            else:
+                meio = n[controle]
+                palin[i] = n[controle + 1]
+                palin[-i - 1] = n[controle + 2]
+                controle += 3
+                palin[int(tam/2)] = meio
+    if impares == 0:
+        meio = n[-1]
+        palin[int(tam / 2)] = meio
+        print("".join(palin))
+    elif impares == 1 and palin[0] == palin[-1]:
+        palin[int(tam / 2)] = meio
+        print("".join(palin))
+    else:
+        print("NO SOLUTION")
