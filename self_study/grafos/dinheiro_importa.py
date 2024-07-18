@@ -20,6 +20,7 @@ def dfs(s):
     q.append(s)
     visited[s] = True
     while q:
+
         p = q.pop()
         for j in fships[p]:
             if not visited[j]:
