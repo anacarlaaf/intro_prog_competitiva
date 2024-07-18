@@ -1,18 +1,12 @@
-4 15 13
-Bob
-Nina
-Jess
-Tim
-Nina 2
-Bob 2
-Nina 1
-Jess 3
-Bob 2
-Jess 2
-Nina 1
-Jess 2
-Nina 3
-Bob 1
-Nina 3
-Jess 3
-Bob 2
+3
+SET 0
+CLEAR 1
+AND 2 2
+6
+SET 31
+SET 30
+CLEAR 29
+AND 29 30
+OR 29 30
+AND 30 28
+0

@@ -1,8 +1,6 @@
 n = int(input())
-a = input()
-a = [int(i) for i in a.split()]
+a = list(map(int, input().split()))
 
-j = a[0]
 maior_soma = -(2 ** 31)
 soma = -(2 ** 31)
 for i in a:

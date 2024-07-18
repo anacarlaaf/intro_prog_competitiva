@@ -3,16 +3,13 @@
 n, x = map(int, input().split())
 ar = list(map(int, input().split()))
 
-l = 0
-r = 1
-soma = 0
-idxs = []
-found = False
-while soma != x and l <= 0 or r <= 0:
-    soma = ar[l] + ar[r]
-
-
-if found:
-    print(idxs[l, r])
+# criar dict com os índices
+indx = {}
+for i in range(n):
+    outro = x - ar[i]
+    if outro in indx:  # verificar se chave existe em dict é O(1)
+        print(i+1, indx[outro])
+        break
+    indx[ar[i]] = i+1
 else:
     print("IMPOSSIBLE")
